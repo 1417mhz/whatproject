@@ -13,7 +13,7 @@ public class User {
     private String pw;
     private String name;
     private String contact;
-    private String dob; // LocalDate.now() -> String 형변환
+    private String dob;
     private String gender;
     private String grade;
     private String state; // default = '활성'

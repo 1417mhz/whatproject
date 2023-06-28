@@ -19,11 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/member/list-api")
-    @ResponseBody
-    public List<User> findAll() {
-        return userService.findAllUser();
-    }
 
     @GetMapping("/member/register")
     public String saveNewUserForm() {
@@ -31,23 +26,35 @@ public class UserController {
         return "/member/saveNewUserForm";
     }
 
-    @RequestMapping("/member/register")
-    public String saveNewUser(HttpServletRequest req) {
-
-        User user = new User();
-        user.setEmail(req.getParameter("email"));
-        user.setId(req.getParameter("id"));
-        user.setPw(req.getParameter("pw"));
-        user.setName(req.getParameter("name"));
-        user.setContact(req.getParameter("contact"));
-        user.setDob(req.getParameter("dob"));
-        user.setGender(req.getParameter("gender"));
-        user.setGrade(req.getParameter("grade"));
+    @PostMapping("/member/register")
+    public String saveNewUser(@ModelAttribute User user) {
 
         userService.saveUser(user);
 
         System.out.println("** 신규 회원 저장 완료 **");
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/member/list-api")
+    @ResponseBody
+    public List<User> findAllUser() {
+        return userService.findAllUser();
+    }
+
+    @GetMapping("/member/pw-change")
+    public String changeUserPwForm() {
+        return "/member/changePwForm";
+    }
+
+    @PostMapping("/member/pw-change")
+    public String changeUserPw(String userId, String inputPw, String changePw) {
+        if (userService.userVerify(userId, inputPw)) { // 입력된 비밀번호와 db에 있는 비밀번호가 일치한지 확인
+            userService.changeUserPw(userId, changePw); // 일치할 경우 변경 작업 수행
+            System.out.println("** 사용자 비밀번호 변경 완료 **");
+        } else {
+            System.out.println("!! 사용자 비밀번호 변경 실패 !!");
+        }
         return "redirect:/";
     }
 
