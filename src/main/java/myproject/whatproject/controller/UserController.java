@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-
 @Controller
 public class UserController {
 
@@ -27,19 +24,13 @@ public class UserController {
     }
 
     @PostMapping("/member/register")
-    public String saveNewUser(@ModelAttribute User user) {
+    public String saveNewUser(@RequestBody User user) {
 
         userService.saveUser(user);
 
         System.out.println("** 신규 회원 저장 완료 **");
 
         return "redirect:/";
-    }
-
-    @GetMapping("/member/list-api")
-    @ResponseBody
-    public List<User> findAllUser() {
-        return userService.findAllUser();
     }
 
     @GetMapping("/member/pw-change")
