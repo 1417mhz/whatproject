@@ -24,12 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/member/register")
-    public String saveNewUser(@RequestBody User user) {
-
+    public String saveNewUser(@ModelAttribute User user) {
         userService.saveUser(user);
-
-        System.out.println("** 신규 회원 저장 완료 **");
-
         return "redirect:/";
     }
 
@@ -40,12 +36,7 @@ public class UserController {
 
     @PostMapping("/member/pw-change")
     public String changeUserPw(String userId, String inputPw, String changePw) {
-        if (userService.userVerify(userId, inputPw)) { // 입력된 비밀번호와 db에 있는 비밀번호가 일치한지 확인
-            userService.changeUserPw(userId, changePw); // 일치할 경우 변경 작업 수행
-            System.out.println("** 사용자 비밀번호 변경 완료 **");
-        } else {
-            System.out.println("!! 사용자 비밀번호 변경 실패 !!");
-        }
+        userService.changeUserPw(userId, inputPw, changePw);
         return "redirect:/";
     }
 

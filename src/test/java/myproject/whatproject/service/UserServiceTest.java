@@ -5,6 +5,7 @@ import myproject.whatproject.mapper.MyMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -14,7 +15,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class UserServiceTest {
 
     @Autowired MyMapper myMapper;
+    @Autowired UserService userService;
+    @Autowired PasswordEncoder pwEncoder;
 
+    /*
     @Test
     void findUserByIdTest() {
         String userId = "ysww";
@@ -43,6 +47,30 @@ public class UserServiceTest {
         User user = myMapper.findUserById(userId);
         assertThat(user.getPw()).isEqualTo(changePw);
         System.out.println("변경된 비밀번호 = " + user.getPw());
+    }
+    **/
+
+    @Test
+    void userPwChangeTest2() {
+        String userId = "b12345";
+        String inputPw = "123456";
+        String changePw = "987654";
+
+        userService.changeUserPw(userId, inputPw, changePw);
+        assertThat(pwEncoder.matches(changePw, myMapper.userVerify(userId))).isTrue();
+    }
+
+    @Test
+    void userDuplicateValidateTest() {
+        String userId1 = "qwerasdf";
+        String userEmail1 = "12345@gmail.com";
+        String userId2 = "ysww";
+        String userEmail2 = "54321@gmail.com";
+
+        boolean validation1 = userService.userDuplicateValidation(userId1, userEmail1);
+        boolean validation2 = userService.userDuplicateValidation(userId2, userEmail2);
+        assertThat(validation1).isTrue();
+        assertThat(validation2).isFalse();
     }
 
 }

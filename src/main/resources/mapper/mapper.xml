@@ -15,6 +15,10 @@
         SELECT * FROM USER WHERE id = #{userId}
     </select>
 
+    <select id="findUserByEmail" parameterType="string" resultType="myproject.whatproject.domain.user.User">
+        SELECT * FROM USER WHERE id = #{userEmail}
+    </select>
+
     <select id="userVerify" resultType="string" parameterType="string">
         SELECT pw FROM USER WHERE id = #{userId}
     </select>
