@@ -1,24 +1,19 @@
 package myproject.whatproject.service;
 
+import lombok.RequiredArgsConstructor;
 import myproject.whatproject.domain.user.User;
 import myproject.whatproject.mapper.MyMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final MyMapper myMapper;
     private final PasswordEncoder pwEncoder;
-
-    @Autowired
-    public UserService(MyMapper myMapper, PasswordEncoder pwEncoder) {
-        this.myMapper = myMapper;
-        this.pwEncoder = pwEncoder;
-    }
 
     // 회원 저장 메소드
     public void saveUser(User user) {
@@ -36,27 +31,32 @@ public class UserService {
     // 회원 정보 중복 여부 확인 메소드
     public boolean userDuplicateValidation(String userId, String userEmail) {
         // 쿼리를 한 번 만 보내는 방법은 없을까
-        return myMapper.findUserById(userId) == null && myMapper.findUserByEmail(userEmail) == null;
+        return findUserById(userId) == null && findUserByEmail(userEmail) == null;
         // 중복되는 회원 정보가 없으면 true 반환
     }
 
+    // 회원 전체 조회 메소드
     public List<User> findAllUser() {
         return myMapper.findAllUser();
     }
 
+    // 회원 ID를 통한 조회 메소드
     public User findUserById(String userId) {
         return myMapper.findUserById(userId);
     }
 
+    // 회원 이메일을 통한 조회 메소드
     public User findUserByEmail(String userEmail) {
         return myMapper.findUserByEmail(userEmail);
     }
 
+    // 회원 중복 여부 확인 메소드
     public boolean userVerify(String userId, String inputPw) {
         // form 으로 전달받은 유저의 현재 비밀번호와 db에 저장된 현재 비밀번호(암호화 됨)가 일치한지 확인
         return pwEncoder.matches(inputPw, myMapper.userVerify(userId));
     }
 
+    // 회원 비밀번호 변경 메소드
     public void changeUserPw(String userId, String inputPw, String changePw) {
         // 입력된 비밀번호와 db에 있는 암호화 된 비밀번호가 서로 일치한지 확인
         if (userVerify(userId, inputPw)) {

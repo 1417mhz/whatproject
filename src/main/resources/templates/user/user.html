@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
+  <title>회원 상세정보</title>
+<!--  어드민 페이지-->
+</head>
+<body>
+  <div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+      <h2>회원 상세정보</h2>
+    </div>
+    <button type="button" th:onclick="|location.href='@{/user/list}'|">이전으로</button>
+    <div>
+      <label for="user_no">#</label>
+      <input type="text" id="user_no" name="user_no" class="form-control"
+             value="#" th:value="${user.user_no}" readonly>
+    </div>
+    <div>
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" class="form-control"
+             value="아이디" th:value="${user.id}" readonly>
+    </div>
+    <div>
+      <label for="email">이메일</label>
+      <input type="text" id="email" name="email" class="form-control"
+             value="이메일" th:value="${user.email}" readonly>
+    </div>
+    <div>
+      <label for="name">성명</label>
+      <input type="text" id="name" name="name" class="form-control"
+             value="성명" th:value="${user.name}" readonly>
+    </div>
+    <div>
+      <label for="contact">연락처</label>
+      <input type="text" id="contact" name="contact" class="form-control"
+             value="연락처" th:value="${user.contact}" readonly>
+    </div>
+    <div>
+      <label for="dob">생년월일</label>
+      <input type="text" id="dob" name="dob" class="form-control"
+             value="생년월일" th:value="${user.dob}" readonly>
+    </div>
+    <div>
+      <label for="gender">성별</label>
+      <input type="text" id="gender" name="gender" class="form-control"
+             value="성별" th:value="${user.gender}" readonly>
+    </div>
+    <div>
+      <label for="grade">등급</label>
+      <input type="text" id="grade" name="grade" class="form-control"
+             value="등급" th:value="${user.grade}" readonly>
+    </div>
+    <div>
+      <label for="state">활성상태</label>
+      <input type="text" id="state" name="state" class="form-control"
+             value="활성상태" th:value="${user.state}" readonly>
+    </div>
+  </div>
+</body>
+</html>
