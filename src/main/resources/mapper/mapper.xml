@@ -3,8 +3,8 @@
 <mapper namespace="myproject.whatproject.mapper.MyMapper">
 
     <insert id="saveUser" parameterType="myproject.whatproject.domain.user.User">
-        INSERT INTO USER (email, id, pw, name, contact, dob, gender, grade)
-        VALUES (#{email}, #{id}, #{pw}, #{name}, #{contact}, #{dob}, #{gender}, #{grade})
+        INSERT INTO USER (email, id, pw, name, contact, dob, gender)
+        VALUES (#{email}, #{id}, #{pw}, #{name}, #{contact}, #{dob}, #{gender})
     </insert>
 
     <select id="findAllUser" resultType="myproject.whatproject.domain.user.User">
@@ -26,5 +26,18 @@
     <update id="changeUserPw" parameterType="string">
         UPDATE USER SET pw = #{changePw} WHERE id = #{userId}
     </update>
+
+    <insert id="saveProduct" parameterType="myproject.whatproject.domain.product.Product">
+        INSERT INTO PRODUCT (name, price, description, quantity, seller, category)
+        VALUES (#{name}, #{price}, #{description}, #{quantity}, #{seller}, #{category})
+    </insert>
+
+    <select id="listAllProduct" resultType="myproject.whatproject.domain.product.Product">
+        SELECT * FROM PRODUCT
+    </select>
+
+    <select id="findProductByNum" parameterType="string" resultType="myproject.whatproject.domain.product.Product">
+        SELECT * FROM PRODUCT WHERE product_no = #{product_no}
+    </select>
 
 </mapper>

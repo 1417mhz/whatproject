@@ -1,6 +1,8 @@
 package myproject.whatproject.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import myproject.whatproject.domain.product.Product;
 import myproject.whatproject.domain.user.User;
 import myproject.whatproject.mapper.MyMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class UserService {
 
@@ -22,9 +25,9 @@ public class UserService {
             // 비밀번호 암호화 후 저장 로직 수행
             user.setPw(pwEncoder.encode(user.getPw()));
             myMapper.saveUser(user);
-            System.out.println("** 회원가입 완료 **");
+            log.info("** 회원가입 완료 **");
         } else {
-            System.out.println("!! 이미 존재하는 회원입니다 !!");
+            log.error("!! 이미 존재하는 회원입니다 !!");
         }
     }
 
@@ -61,10 +64,9 @@ public class UserService {
         // 입력된 비밀번호와 db에 있는 암호화 된 비밀번호가 서로 일치한지 확인
         if (userVerify(userId, inputPw)) {
             myMapper.changeUserPw(userId, pwEncoder.encode(changePw)); // 일치할 경우 변경 작업 수행
-            System.out.println("** 사용자 비밀번호 변경 완료 **");
+            log.info("** 사용자 비밀번호 변경 완료 **");
         } else {
-            System.out.println("!! 사용자 비밀번호 변경 실패 !!");
+            log.error("!! 사용자 비밀번호 변경 실패 !!");
         }
     }
-
 }

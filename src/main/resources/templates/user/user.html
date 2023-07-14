@@ -11,7 +11,6 @@
     <div class="py-5 text-center">
       <h2>회원 상세정보</h2>
     </div>
-    <button type="button" th:onclick="|location.href='@{/user/list}'|">이전으로</button>
     <div>
       <label for="user_no">#</label>
       <input type="text" id="user_no" name="user_no" class="form-control"
@@ -57,6 +56,17 @@
       <input type="text" id="state" name="state" class="form-control"
              value="활성상태" th:value="${user.state}" readonly>
     </div>
-  </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col">
+        <button class="w-100 btn btn-secondary btn-lg"
+                onclick="location.href='users.html'"
+                th:onclick="|location.href='@{/user/list}'|"
+                type="button">
+          목록으로
+        </button>
+      </div>
+    </div>
+  </div><!-- /container -->
 </body>
 </html>
