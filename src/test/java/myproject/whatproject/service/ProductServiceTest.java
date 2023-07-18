@@ -32,4 +32,17 @@ class ProductServiceTest {
         Assertions.assertThat(products).hasSize(2);
     }
 
+    @Test
+    void saveNewProductTest() {
+        Product product = new Product();
+        product.setName("좋은거");
+        product.setPrice("50000");
+        product.setDescription("좋은거");
+        product.setQuantity("5");
+        product.setSeller("2"); // 등록되어있는 판매자
+        product.setCategory("전자제품");
+
+        productService.saveProduct(product);
+    }
+
 }

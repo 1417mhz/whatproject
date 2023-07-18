@@ -1,6 +1,7 @@
 package myproject.whatproject.mapper;
 
 import myproject.whatproject.domain.product.Product;
+import myproject.whatproject.domain.seller.Seller;
 import myproject.whatproject.domain.user.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -32,5 +33,8 @@ public interface MyMapper {
     List<Product> listAllProduct();
 
     Product findProductByNum(String product_no);
+
+    /* 판매자 **/
+    Seller findSellerByNum(String seller_no);
 
 }

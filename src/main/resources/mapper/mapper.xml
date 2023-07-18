@@ -27,6 +27,10 @@
         UPDATE user SET pw = #{changePw} WHERE id = #{userId}
     </update>
 
+    <select id="getUserIdByNo" parameterType="string" resultType="string">
+        SELECT id FROM user WHERE user_no = #{user_no}
+    </select>
+
     <insert id="saveProduct" parameterType="myproject.whatproject.domain.product.Product">
         INSERT INTO product (name, price, description, quantity, seller, category)
         VALUES (#{name}, #{price}, #{description}, #{quantity}, #{seller}, #{category})
@@ -38,6 +42,10 @@
 
     <select id="findProductByNum" parameterType="string" resultType="myproject.whatproject.domain.product.Product">
         SELECT * FROM product WHERE product_no = #{product_no}
+    </select>
+
+    <select id="findSellerByNum" parameterType="string" resultType="myproject.whatproject.domain.seller.Seller">
+        SELECT * FROM seller WHERE seller_no = #{seller_no}
     </select>
 
 </mapper>

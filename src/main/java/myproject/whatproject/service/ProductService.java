@@ -16,8 +16,12 @@ public class ProductService {
     private final MyMapper myMapper;
 
     public void saveProduct(Product product) {
-        myMapper.saveProduct(product);
-        log.info("** 상품 등록 완료 **");
+        if (myMapper.findSellerByNum(product.getSeller()) != null) {
+            myMapper.saveProduct(product);
+            log.info("** 상품 등록 완료 **");
+        } else {
+            log.info("!! 해당 판매자는 등록되어있지 않습니다 !!");
+        }
     }
 
     public List<Product> listAllProduct() {
