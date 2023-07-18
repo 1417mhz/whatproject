@@ -2,11 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="utf-8">
-  <link href="../css/bootstrap.min.css"
-        th:href="@{/css/bootstrap.min.css}"
-        rel="stylesheet">
-  <title>상품 상세</title>
+  <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <title>회원가입</title>
 </head>
+<script>
+  // 전화번호 input 자동 하이픈 삽입
+  const numAutoHyphen = (target) => {
+    target.value = target.value
+            .replace(/[^0-9]/g, '')
+            .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+  }
+  // 아이디 input에 영어만 입력되도록
+  const typeOnlyEng = (target) => {
+    target.value = target.value .replace(/[^\\!-z]/gi,"");
+  }
+</script>
 <body>
 <div class="container" style="max-width: 600px">
   <div class="py-5 text-center">
@@ -16,32 +26,36 @@
         th:action
         method="post">
     <div>
-      <label for="email">이메일</label>
-      <input type="text" id="email" name="email" class="form-control">
-    </div>
-    <div>
       <label for="id">아이디</label>
-      <input type="text" id="id" name="id" class="form-control">
+      <input type="text" id="id" name="id" class="form-control" oninput="typeOnlyEng(this)" required>
     </div>
     <div>
       <label for="pw">비밀번호</label>
-      <input type="text" id="pw" name="pw" class="form-control">
+      <input type="password" minlength="6" id="pw" name="pw" class="form-control" placeholder="6자 이상 입력" required>
+    </div>
+    <div>
+      <label for="email">이메일</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="example@xxx.xxx" required>
     </div>
     <div>
       <label for="name">이름</label>
-      <input type="text" id="name" name="name" class="form-control">
+      <input type="text" id="name" name="name" class="form-control" required>
     </div>
     <div>
       <label for="contact">전화번호</label>
-      <input type="text" id="contact" name="contact" class="form-control">
+      <input type="text" oninput="numAutoHyphen(this)" id="contact" name="contact" class="form-control" placeholder="- 제외하고 작성" required>
     </div>
     <div>
-      <label for="dob">생년월일(yyyy-mm-dd)</label>
-      <input type="text" id="dob" name="dob" class="form-control">
+      <label for="dob">생년월일</label>
+      <input type="date" id="dob" name="dob" class="form-control" required>
     </div>
     <div>
       <label for="gender">성별</label>
-      <input type="text" id="gender" name="gender" class="form-control">
+      <select name="gender" id="gender" class="form-select">
+        <option value="" selected="selected">선택</option>
+        <option value="남">남</option>
+        <option value="여">여</option>
+      </select>
     </div>
     <hr class="my-4">
     <div class="row">
