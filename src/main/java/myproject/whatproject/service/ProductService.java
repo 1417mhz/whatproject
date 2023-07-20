@@ -20,7 +20,7 @@ public class ProductService {
             myMapper.saveProduct(product);
             log.info("** 상품 등록 완료 **");
         } else {
-            log.info("!! 해당 판매자는 등록되어있지 않습니다 !!");
+            log.error("!! 해당 판매자는 등록되어있지 않습니다 !!");
         }
     }
 
