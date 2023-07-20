@@ -18,6 +18,7 @@ public class User {
     private String dob;
     private String gender;
     private String grade;
+    private int balance;
     private String state; // default = '활성'
 
 }
