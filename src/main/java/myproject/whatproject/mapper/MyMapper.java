@@ -17,6 +17,8 @@ public interface MyMapper {
 
     List<User> findAllUser();
 
+    User findUserByNum(String user_no);
+
     User findUserById(String userId);
 
     User findUserByEmail(String userEmail);
@@ -26,6 +28,11 @@ public interface MyMapper {
     // 인자를 두 개 이상 전달 시 mapper 에서 인자 이름을 인식할 수 있도록 직접 이름을 지정
     void changeUserPw(@Param("userId") String userId, @Param("changePw") String changePw);
 
+    /* 판매자 **/
+    List<Seller> findAllSeller();
+
+    Seller findSellerByNum(String seller_no);
+
 
     /* 상품 **/
     void saveProduct(Product product);
@@ -33,8 +40,5 @@ public interface MyMapper {
     List<Product> listAllProduct();
 
     Product findProductByNum(String product_no);
-
-    /* 판매자 **/
-    Seller findSellerByNum(String seller_no);
 
 }

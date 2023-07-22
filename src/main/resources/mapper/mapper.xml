@@ -11,6 +11,10 @@
         SELECT * FROM user
     </select>
 
+    <select id="findUserByNum" resultType="myproject.whatproject.domain.user.User">
+        SELECT * FROM user WHERE user_no = #{user_no}
+    </select>
+
     <select id="findUserById" parameterType="string" resultType="myproject.whatproject.domain.user.User">
         SELECT * FROM user WHERE id = #{userId}
     </select>
@@ -27,8 +31,9 @@
         UPDATE user SET pw = #{changePw} WHERE id = #{userId}
     </update>
 
-    <select id="getUserIdByNo" parameterType="string" resultType="string">
-        SELECT id FROM user WHERE user_no = #{user_no}
+
+    <select id="findAllSeller" resultType="myproject.whatproject.domain.seller.Seller">
+        SELECT * FROM seller
     </select>
 
     <insert id="saveProduct" parameterType="myproject.whatproject.domain.product.Product">
