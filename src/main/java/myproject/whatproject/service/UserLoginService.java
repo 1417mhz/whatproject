@@ -4,11 +4,13 @@ import lombok.RequiredArgsConstructor;
 import myproject.whatproject.domain.user.User;
 import myproject.whatproject.mapper.MyMapper;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -21,10 +23,12 @@ public class UserLoginService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         User user = myMapper.findUserById(userId);
         if (user != null) {
-            return new UserDetails() {
+            return new UserDetails() { // UserPrincipal
                 @Override
                 public Collection<? extends GrantedAuthority> getAuthorities() {
-                    return null;
+                    Collection<GrantedAuthority> roleList = new ArrayList<>();
+                    roleList.add(new SimpleGrantedAuthority(user.getRole()));
+                    return roleList;
                 }
 
                 @Override
@@ -54,7 +58,7 @@ public class UserLoginService implements UserDetailsService {
 
                 @Override
                 public boolean isEnabled() {
-                    return true;
+                    return user.getState().equals("활성");
                 }
             };
         } else { return null; }

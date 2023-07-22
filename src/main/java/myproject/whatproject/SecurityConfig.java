@@ -20,19 +20,22 @@ public class SecurityConfig {
                 .csrf().disable();
         http
                 .authorizeRequests()
-                    .antMatchers("/user/pw-change",
-                                 "/user/list",
-                                 "/product/register").authenticated()
-                    .anyRequest().permitAll();
+                .antMatchers("/user/pw-change",
+                             "/product/register").authenticated()
+                .antMatchers("/user/list",
+                             "/seller/list").hasRole("ADMIN")
+                .anyRequest().permitAll();
+
 
         // login 설정
         http
                 .formLogin()
-                .loginPage("/user/login")    // GET 요청 (login form을 보여줌)
-                .loginProcessingUrl("/user/login")    // POST 요청 (login 창에 입력한 데이터를 처리)
-                .usernameParameter("userId")	// login에 필요한 id 값을 email로 설정 (default는 username)
-                .passwordParameter("userPw")	// login에 필요한 password 값을 password(default)로 설정
-                .defaultSuccessUrl("/");	// login에 성공하면 /로 redirect
+                .loginPage("/user/login") // GET 요청 (login form을 보여줌)
+                .loginProcessingUrl("/user/login") // POST 요청 (login 창에 입력한 데이터를 처리)
+                .usernameParameter("userId") // login에 필요한 id 값을 userId로 설정
+                .passwordParameter("userPw") // login에 필요한 password 값을 userPw로 설정
+                .defaultSuccessUrl("/"); // login에 성공하면 /로 redirect
+//                .failureHandler(new loginFailureHandler());
 
         // logout 설정
         http
