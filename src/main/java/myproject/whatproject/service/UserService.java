@@ -43,6 +43,11 @@ public class UserService {
         return myMapper.findAllUser();
     }
 
+    // 회원 등록번호를 통한 조회 메소드
+    public User findUserByNum(String user_no) {
+        return myMapper.findUserByNum(user_no);
+    }
+
     // 회원 ID를 통한 조회 메소드
     public User findUserById(String userId) {
         return myMapper.findUserById(userId);
