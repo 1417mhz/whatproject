@@ -17,8 +17,10 @@ public class User {
     private String contact;
     private String dob;
     private String gender;
-    private String grade;
+    private String role;
     private int balance;
     private String state; // default = '활성'
+    private String signup_date; // current_timestamp
+    private String leave_date; // current_timestamp
 
 }
