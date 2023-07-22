@@ -7,17 +7,22 @@
 </head>
 <body>
 <div class="row">
-  <div class="">
-    <ul>
-      <li sec:authorize="isAnonymous()"><a href="/user/login">로그인</a></li>
-      <li sec:authorize="isAuthenticated()"><a href="/user/logout">로그아웃</a></li>
-    </ul>
-  </div>
+  <p sec:authorize="isAnonymous()"><a href="/user/login">로그인</a></p>
+  <p sec:authorize="isAuthenticated()"><a href="/user/logout">로그아웃</a></p>
+  <br>
+  <p sec:authorize="hasRole('ADMIN')">관리자</p>
+  <p sec:authorize="hasRole('BASIC')">일반 사용자</p>
+
   <div class="">
     <ul>
       <li><a href="/user/register">회원가입</a></li>
       <li><a href="/user/pw-change">비밀번호 변경</a></li>
       <li><a href="/user/list">회원 정보 조회</a></li>
+    </ul>
+  </div>
+  <div class="">
+    <ul>
+      <li><a href="/seller/list">판매자</a></li>
     </ul>
   </div>
   <div class="">

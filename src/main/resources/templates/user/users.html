@@ -17,7 +17,7 @@
       <table class="table">
         <thead>
         <tr>
-          <th>#</th>
+          <th>회원번호</th>
           <th>아이디</th>
           <th>이메일</th>
           <th>성명</th>
@@ -25,8 +25,8 @@
         </thead>
         <tbody>
         <tr th:each="user : ${users}">
-          <td th:text="${user.user_no}">#</td>
-          <td><a href="users.html" th:text="${user.id}" th:href="@{|/user/list/${user.id}|}">아이디</a></td>
+          <td th:text="${user.user_no}">회원번호</td>
+          <td><a href="users.html" th:text="${user.id}" th:href="@{|/user/list/${user.user_no}|}">아이디</a></td>
           <td th:text="${user.email}">이메일</td>
           <td th:text="${user.name}">성명</td>
         </tr>
