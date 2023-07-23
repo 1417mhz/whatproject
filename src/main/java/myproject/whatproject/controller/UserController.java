@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -47,7 +48,8 @@ public class UserController {
 
     // 회원 비밀번호 변경 폼 매핑
     @GetMapping("/pw-change")
-    public String changeUserPwForm() {
+    public String changeUserPwForm(Principal principal, Model model) {
+        model.addAttribute("userId", principal.getName());
         return "/user/changePwForm";
     }
 
@@ -58,8 +60,19 @@ public class UserController {
         return "redirect:/";
     }
 
+    // 로그인 폼 요청 매핑
     @GetMapping("/login")
     public String loginUserForm() {
         return "/user/userLoginForm";
     }
+
+    // 마이페이지 요청 매핑
+    @GetMapping("/my-page")
+    public String myPage(Principal principal, Model model) { // 로그인 된 유저의 정보를 가져와 쿼리 조회
+        String userId = principal.getName();
+        User user = userService.findUserById(userId);
+        model.addAttribute("user", user);
+        return "/user/my-page";
+    }
+
 }
