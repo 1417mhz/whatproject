@@ -12,7 +12,7 @@ public class Product {
     private String name;
     private String price;
     private String description;
-    private String quantity;
+    private int quantity;
     private String reg_date; // timestamp
     private String state; // default = '활성'
     private String seller;
