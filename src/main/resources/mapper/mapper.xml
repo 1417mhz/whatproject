@@ -53,4 +53,21 @@
         SELECT * FROM seller WHERE seller_no = #{seller_no}
     </select>
 
+    <select id="findAllOrder" resultType="myproject.whatproject.domain.purchase.Purchase">
+        SELECT * FROM purchase
+    </select>
+
+    <insert id="createNewOrder" parameterType="myproject.whatproject.domain.purchase.Purchase">
+        INSERT INTO purchase (product_no, price, quantity, buyer, contact, seller)
+        VALUES (#{product_no}, #{price}, #{quantity}, #{buyer}, #{contact}, #{seller})
+    </insert>
+
+    <update id="updateProductQuantity" parameterType="string">
+        UPDATE product SET quantity = #{quantity} WHERE product_no = #{product_no}
+    </update>
+
+    <update id="updateUserBalance" parameterType="string">
+        UPDATE user SET balance = #{balance} WHERE user_no = #{user_no}
+    </update>
+
 </mapper>
