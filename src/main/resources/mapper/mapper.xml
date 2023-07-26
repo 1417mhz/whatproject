@@ -12,7 +12,7 @@
     </select>
 
     <select id="findUserByNum" resultType="myproject.whatproject.domain.user.User">
-        SELECT * FROM user WHERE user_no = #{user_no}
+        SELECT * FROM user WHERE user_no = #{userNum}
     </select>
 
     <select id="findUserById" parameterType="string" resultType="myproject.whatproject.domain.user.User">
@@ -20,7 +20,7 @@
     </select>
 
     <select id="findUserByEmail" parameterType="string" resultType="myproject.whatproject.domain.user.User">
-        SELECT * FROM user WHERE id = #{userEmail}
+        SELECT * FROM user WHERE enail = #{userEmail}
     </select>
 
     <select id="userVerify" resultType="string" parameterType="string">
@@ -46,11 +46,11 @@
     </select>
 
     <select id="findProductByNum" parameterType="string" resultType="myproject.whatproject.domain.product.Product">
-        SELECT * FROM product WHERE product_no = #{product_no}
+        SELECT * FROM product WHERE product_no = #{productNum}
     </select>
 
     <select id="findSellerByNum" parameterType="string" resultType="myproject.whatproject.domain.seller.Seller">
-        SELECT * FROM seller WHERE seller_no = #{seller_no}
+        SELECT * FROM seller WHERE seller_no = #{sellerNum}
     </select>
 
     <select id="findAllOrder" resultType="myproject.whatproject.domain.purchase.Purchase">
@@ -59,15 +59,15 @@
 
     <insert id="createNewOrder" parameterType="myproject.whatproject.domain.purchase.Purchase">
         INSERT INTO purchase (product_no, price, quantity, buyer, contact, seller)
-        VALUES (#{product_no}, #{price}, #{quantity}, #{buyer}, #{contact}, #{seller})
+        VALUES (#{productNum}, #{price}, #{quantity}, #{buyer}, #{contact}, #{seller})
     </insert>
 
     <update id="updateProductQuantity" parameterType="string">
-        UPDATE product SET quantity = #{quantity} WHERE product_no = #{product_no}
+        UPDATE product SET quantity = #{quantity} WHERE product_no = #{productNum}
     </update>
 
     <update id="updateUserBalance" parameterType="string">
-        UPDATE user SET balance = #{balance} WHERE user_no = #{user_no}
+        UPDATE user SET balance = #{balance} WHERE user_no = #{userNum}
     </update>
 
 </mapper>

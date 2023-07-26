@@ -18,7 +18,7 @@ public interface MyMapper {
 
     List<User> findAllUser();
 
-    User findUserByNum(String user_no);
+    User findUserByNum(String userNum);
 
     User findUserById(String userId);
 
@@ -32,7 +32,7 @@ public interface MyMapper {
     /* 판매자 **/
     List<Seller> findAllSeller();
 
-    Seller findSellerByNum(String seller_no);
+    Seller findSellerByNum(String sellerNum);
 
 
     /* 상품 **/
@@ -40,15 +40,15 @@ public interface MyMapper {
 
     List<Product> listAllProduct();
 
-    Product findProductByNum(String product_no);
+    Product findProductByNum(String productNum);
 
     /* 주문 **/
     List<Purchase> findAllOrder();
 
     void createNewOrder(Purchase purchase);
 
-    void updateProductQuantity(@Param("product_no") String product_no, @Param("quantity") String orderQuantity);
+    void updateProductQuantity(@Param("productNum") String productNum, @Param("quantity") String orderQuantity);
 
-    void updateUserBalance(@Param("user_no") String user_no, @Param("balance") String balance);
+    void updateUserBalance(@Param("userNum") String userNum, @Param("balance") String balance);
 
 }

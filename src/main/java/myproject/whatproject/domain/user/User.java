@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
 
-    private String user_no; // auto_increment
+    private String userNum; // auto_increment
     private String email;
     private String id;
     private String pw;
@@ -20,7 +20,7 @@ public class User {
     private String role;
     private int balance;
     private String state; // default = '활성'
-    private String signup_date; // current_timestamp
-    private String leave_date; // current_timestamp
+    private String signupDate; // current_timestamp
+    private String leaveDate; // current_timestamp
 
 }

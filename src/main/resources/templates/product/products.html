@@ -25,7 +25,7 @@
             </thead>
             <tbody>
             <tr th:each="product : ${products}">
-                <td><a href="products.html" th:text="${product.product_no}" th:href="@{|/product/list/${product.product_no}|}">등록번호</a></td>
+                <td><a href="products.html" th:text="${product.productNum}" th:href="@{|/product/list/${product.productNum}|}">등록번호</a></td>
                 <td th:text="${product.name}">상품명</td>
                 <td th:text="${product.price}">가격</td>
                 <td th:text="${product.description}">설명</td>

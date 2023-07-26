@@ -8,18 +8,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 
-    private String purchase_no; // auto_increment
-    private String product_no; // FK product(product_no)
+    private String purchaseNum; // auto_increment
+    private String productNum; // FK product(product_no)
     private int price;
     private int quantity;
-    private String purchase_date; // timestamp
+    private String purchaseDate; // timestamp
     private String buyer; // FK user(user_no)
-    // private String ship_address;
-    // private String post_code;
+    // private String shipAddress;
+    // private String postCode;
     private String contact;
-    // private String ship_co; // FK ship_co(code)
+    // private String shipCo; // FK ship_co(code)
     private String seller; // FK seller(seller_no)
     private String state;
-    private String state_update; // timestamp
+    private String stateUpdate; // timestamp
 
 }

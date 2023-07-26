@@ -8,10 +8,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ShipAddress {
 
-    private String ship_no; // auto_increment
+    private String shipNum; // auto_increment
     private String user; // FK user(user_no)
     private String address;
-    private String post_code; // 생략 가능
+    private String postCode; // 생략 가능
     private String contact;
 
 }

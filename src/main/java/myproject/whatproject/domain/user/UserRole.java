@@ -8,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserRole {
 
-    private String role_name;
+    private String roleName;
     private String description;
 
 }

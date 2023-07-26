@@ -44,8 +44,8 @@ public class UserService {
     }
 
     // 회원 등록번호를 통한 조회 메소드
-    public User findUserByNum(String user_no) {
-        return myMapper.findUserByNum(user_no);
+    public User findUserByNum(String userNum) {
+        return myMapper.findUserByNum(userNum);
     }
 
     // 회원 ID를 통한 조회 메소드
