@@ -8,10 +8,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Coupon {
 
-    private String couponCode; // auto_increment
-    private String name;
+    private int couponCode; // auto_increment
+    private String couponName;
     private String description;
-    private String issuer; // 회원
+    private int issuer; // 회원
     private String issueDate; // timestamp
     private String expDate;
 

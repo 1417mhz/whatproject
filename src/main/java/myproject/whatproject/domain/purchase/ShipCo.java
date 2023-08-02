@@ -8,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ShipCo {
 
-    private String companyCode; // auto_increment
+    private int companyCode; // auto_increment
     private String name;
     private String contact;
 

@@ -2,7 +2,6 @@ package myproject.whatproject.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import myproject.whatproject.domain.product.Product;
 import myproject.whatproject.domain.user.User;
 import myproject.whatproject.mapper.MyMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,13 +43,17 @@ public class UserService {
     }
 
     // 회원 등록번호를 통한 조회 메소드
-    public User findUserByNum(String userNum) {
-        return myMapper.findUserByNum(userNum);
+    public User findUserByNo(int userNo) {
+        return myMapper.findUserByNo(userNo);
     }
 
     // 회원 ID를 통한 조회 메소드
     public User findUserById(String userId) {
         return myMapper.findUserById(userId);
+    }
+
+    public int findUserNoById(String userId) {
+        return myMapper.findUserNoById(userId);
     }
 
     // 회원 이메일을 통한 조회 메소드

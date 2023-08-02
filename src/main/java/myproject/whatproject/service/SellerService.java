@@ -19,8 +19,8 @@ public class SellerService {
         return myMapper.findAllSeller();
     }
 
-    public Seller findSellerByNum(String sellerNum) {
-        return myMapper.findSellerByNum(sellerNum);
+    public Seller findSellerByNo(int sellerNo) {
+        return myMapper.findSellerByNo(sellerNo);
     }
 
 }

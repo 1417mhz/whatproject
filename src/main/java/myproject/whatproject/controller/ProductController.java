@@ -34,9 +34,9 @@ public class ProductController {
         return "/product/products";
     }
 
-    @GetMapping("/list/{productNum}")
-    public String productInfo(@PathVariable String productNum, Model model) {
-        Product product = productService.findProductByNum(productNum);
+    @GetMapping("/list/{productNo}")
+    public String productInfo(@PathVariable int productNo, Model model) {
+        Product product = productService.findProductByNo(productNo);
         model.addAttribute("product", product);
         return "/product/product";
     }

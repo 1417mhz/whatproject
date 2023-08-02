@@ -8,14 +8,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Product {
 
-    private String productNo; // auto_increment
-    private String name;
+    private int productNo; // auto_increment
+    private String productName;
     private int price;
     private String description;
-    private int quantity;
+    private int productStock; // 변경 전 quantity
     private String regDate; // timestamp
     private String state; // default = '활성'
-    private String seller;
+    private int seller;
     private String category;
 
 }

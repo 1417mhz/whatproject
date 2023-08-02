@@ -16,7 +16,7 @@ public class ProductService {
     private final MyMapper myMapper;
 
     public void saveProduct(Product product) {
-        if (myMapper.findSellerByNum(product.getSeller()) != null) {
+        if (myMapper.findSellerByNo(product.getSeller()) != null) {
             myMapper.saveProduct(product);
             log.info("** 상품 등록 완료 **");
         } else {
@@ -28,8 +28,8 @@ public class ProductService {
         return myMapper.listAllProduct();
     }
 
-    public Product findProductByNum(String product_no) {
-        return myMapper.findProductByNum(product_no);
+    public Product findProductByNo(int productNo) {
+        return myMapper.findProductByNo(productNo);
     }
 
 }

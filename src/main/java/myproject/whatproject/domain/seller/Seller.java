@@ -8,8 +8,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Seller {
 
-    private String sellerNo; // auto_increment
-    private String userNo; // 등록된 회원은 판매자가 될 수 있다
+    private int sellerNo; // auto_increment
+    private int userNo; // 등록된 회원은 판매자가 될 수 있다
     private String contact;
     private String state;
 

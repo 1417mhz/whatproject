@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
 
-    private String userNo; // auto_increment
+    private int userNo; // auto_increment
     private String email;
     private String id;
     private String pw;

@@ -8,9 +8,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserCoupon {
 
-    private String issueCode; // auto_increment
-    private String couponCode; // FK coupon(coupon_no)
-    private String userNum; // FK user(user_no)
+    private int issueCode; // auto_increment
+    private int couponCode; // FK coupon(coupon_no)
+    private int userNo; // FK user(user_no)
     private String couponState;
 
 }

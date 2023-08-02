@@ -25,8 +25,8 @@
       </thead>
       <tbody>
       <tr th:each="seller : ${sellers}">
-        <td th:text="${seller.sellerNum}">등록번호</td>
-        <td><a href="../user/users.html" th:text="${seller.userNum}" th:href="@{|/user/list/${seller.userNum}|}">회원번호</a></td>
+        <td th:text="${seller.sellerNo}">등록번호</td>
+        <td><a href="../user/users.html" th:text="${seller.userNo}" th:href="@{|/user/list/${seller.userNo}|}">회원번호</a></td>
         <td th:text="${seller.contact}">연락처</td>
         <td th:text="${seller.state}">상태</td>
       </tr>
