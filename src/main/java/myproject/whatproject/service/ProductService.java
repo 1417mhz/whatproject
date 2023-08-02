@@ -28,7 +28,7 @@ public class ProductService {
         return myMapper.listAllProduct();
     }
 
-    public Product findProductByNo(String productNo) {
+    public Product findProductByNo(int productNo) {
         return myMapper.findProductByNo(productNo);
     }
 
