@@ -41,7 +41,7 @@ public class UserController {
     // 회원 세부 정보 조회 요청 매핑
     @GetMapping("/list/{userNum}")
     public String userInfo(@PathVariable String userNum, Model model) {
-        User user = userService.findUserByNum(userNum);
+        User user = userService.findUserByNo(userNum);
         model.addAttribute("user", user);
         return "/user/user";
     }

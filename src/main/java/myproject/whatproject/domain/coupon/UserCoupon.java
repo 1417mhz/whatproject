@@ -10,7 +10,7 @@ public class UserCoupon {
 
     private String issueCode; // auto_increment
     private String couponCode; // FK coupon(coupon_no)
-    private String userNum; // FK user(user_no)
+    private String userNo; // FK user(user_no)
     private String couponState;
 
 }
