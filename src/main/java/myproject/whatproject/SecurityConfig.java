@@ -20,10 +20,14 @@ public class SecurityConfig {
                 .csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/user/pw-change",
-                             "/product/register").authenticated()
+                .antMatchers("/user/my-page",
+                             "/user/pw-change",
+                             "/product/register",
+                             "/order/new",
+                             "/order/list").authenticated()
                 .antMatchers("/user/list",
-                             "/seller/list").hasRole("ADMIN")
+                             "/seller/list",
+                             "/order/list/all").hasRole("ADMIN")
                 .anyRequest().permitAll();
 
 
