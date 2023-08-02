@@ -8,9 +8,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Product {
 
-    private String productNum; // auto_increment
+    private String productNo; // auto_increment
     private String name;
-    private String price;
+    private int price;
     private String description;
     private int quantity;
     private String regDate; // timestamp
