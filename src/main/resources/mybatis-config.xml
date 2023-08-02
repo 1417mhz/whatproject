@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- DB내의 속성 명을 카멜케이스로 바꿔 인식한다 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <typeAliases>
+        <typeAlias type="myproject.whatproject.domain.user.User" alias="User"/>
+        <typeAlias type="myproject.whatproject.domain.seller.Seller" alias="Seller"/>
+        <typeAlias type="myproject.whatproject.domain.product.Product" alias="Product"/>
+        <typeAlias type="myproject.whatproject.domain.purchase.Purchase" alias="Purchase"/>
+    </typeAliases>
+    <mappers>
+        <mapper class="myproject.whatproject.mapper.MyMapper"/>
+    </mappers>
+</configuration>
