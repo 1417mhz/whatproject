@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myproject.whatproject.mapper.MyMapper">
-
-    <insert id="saveUser" parameterType="myproject.whatproject.domain.user.User">
+    <!-- 회원 -->
+    <insert id="saveUser" parameterType="User">
         INSERT INTO user (email, id, pw, name, contact, dob, gender)
         VALUES (#{email}, #{id}, #{pw}, #{name}, #{contact}, #{dob}, #{gender})
     </insert>
 
-    <select id="findAllUser" resultType="myproject.whatproject.domain.user.User">
+    <select id="findAllUser" resultType="User">
         SELECT * FROM user
     </select>
 
-    <select id="findUserByNum" resultType="myproject.whatproject.domain.user.User">
-        SELECT * FROM user WHERE user_no = #{userNum}
+    <select id="findUserByNo" parameterType="_int" resultType="User">
+        SELECT * FROM user WHERE user_no = #{userNo}
     </select>
 
-    <select id="findUserById" parameterType="string" resultType="myproject.whatproject.domain.user.User">
+    <select id="findUserById" parameterType="string" resultType="User">
         SELECT * FROM user WHERE id = #{userId}
     </select>
 
-    <select id="findUserByEmail" parameterType="string" resultType="myproject.whatproject.domain.user.User">
-        SELECT * FROM user WHERE enail = #{userEmail}
+    <select id="findUserNoById" parameterType="string" resultType="_int">
+        SELECT user_no FROM user WHERE id = #{userId}
+    </select>
+
+    <select id="findUserByEmail" parameterType="string" resultType="User">
+        SELECT * FROM user WHERE email = #{userEmail}
     </select>
 
     <select id="userVerify" resultType="string" parameterType="string">
@@ -32,42 +36,67 @@
     </update>
 
 
-    <select id="findAllSeller" resultType="myproject.whatproject.domain.seller.Seller">
+    <!-- 판매자 -->
+    <select id="findAllSeller" resultType="Seller">
         SELECT * FROM seller
     </select>
 
-    <insert id="saveProduct" parameterType="myproject.whatproject.domain.product.Product">
-        INSERT INTO product (name, price, description, quantity, seller, category)
-        VALUES (#{name}, #{price}, #{description}, #{quantity}, #{seller}, #{category})
+    <select id="findSellerByNo" parameterType="_int" resultType="Seller">
+        SELECT * FROM seller WHERE seller_no = #{sellerNo}
+    </select>
+
+
+    <!-- 상품 -->
+    <insert id="saveProduct" parameterType="Product">
+        INSERT INTO product (product_name, price, description, product_stock, seller_no, category)
+        VALUES (#{productName}, #{price}, #{description}, #{productStock}, #{sellerNo}, #{category})
     </insert>
 
-    <select id="listAllProduct" resultType="myproject.whatproject.domain.product.Product">
+    <select id="listAllProduct" resultType="Product">
         SELECT * FROM product
     </select>
 
-    <select id="findProductByNum" parameterType="string" resultType="myproject.whatproject.domain.product.Product">
-        SELECT * FROM product WHERE product_no = #{productNum}
+    <select id="findProductByNo" parameterType="_int" resultType="Product">
+        SELECT * FROM product WHERE product_no = #{productNo}
     </select>
 
-    <select id="findSellerByNum" parameterType="string" resultType="myproject.whatproject.domain.seller.Seller">
-        SELECT * FROM seller WHERE seller_no = #{sellerNum}
-    </select>
 
-    <select id="findAllOrder" resultType="myproject.whatproject.domain.purchase.Purchase">
+    <!-- 주문 -->
+    <select id="findAllOrder" resultType="Purchase">
         SELECT * FROM purchase
     </select>
 
-    <insert id="createNewOrder" parameterType="myproject.whatproject.domain.purchase.Purchase">
-        INSERT INTO purchase (product_no, price, quantity, buyer, contact, seller)
-        VALUES (#{productNum}, #{price}, #{quantity}, #{buyer}, #{contact}, #{seller})
+    <select id="findOrderByNo" parameterType="_int" resultType="Purchase">
+        SELECT * FROM purchase WHERE purchase_no = #{purchaseNo}
+    </select>
+
+    <select id="findUserOrder" parameterType="_int" resultType="Purchase">
+        SELECT * FROM purchase WHERE buyer = #{userNo}
+    </select>
+
+    <insert id="createNewOrder" parameterType="Purchase">
+        INSERT INTO purchase (product_no, price, order_quantity, total_checkout, buyer, buyer_id, contact, seller_no)
+        VALUES (#{productNo}, #{price}, #{orderQuantity}, #{totalCheckout}, #{buyer}, #{buyerId}, #{contact}, #{sellerNo})
     </insert>
 
-    <update id="updateProductQuantity" parameterType="string">
-        UPDATE product SET quantity = #{quantity} WHERE product_no = #{productNum}
+    <update id="updateProductStock" parameterType="_int">
+        UPDATE product SET product_stock = #{newProductStock} WHERE product_no = #{productNo}
     </update>
 
-    <update id="updateUserBalance" parameterType="string">
-        UPDATE user SET balance = #{balance} WHERE user_no = #{userNum}
+    <update id="updateUserBalance" parameterType="_int">
+        UPDATE user SET balance = #{newUserBalance} WHERE user_no = #{userNo}
+    </update>
+
+    <update id="cancelOrder" parameterType="_int">
+        UPDATE purchase SET state = '주문 취소' WHERE purchase_no = #{purchaseNo}
+    </update>
+
+    <update id="restoreProductQuantity" parameterType="_int">
+        UPDATE product SET product_stock = #{restoreQuantity} WHERE product_no = #{productNo}
+    </update>
+
+    <update id="restoreUserBalance" parameterType="_int">
+        UPDATE user SET balance = #{restoreBalance} WHERE user_no = #{userNo}
     </update>
 
 </mapper>
