@@ -15,7 +15,7 @@ public class Product {
     private int productStock; // 변경 전 quantity
     private String regDate; // timestamp
     private String state; // default = '활성'
-    private int seller;
+    private int sellerNo;
     private String category;
 
 }

@@ -23,8 +23,8 @@
           th:action
           method="post">
         <div>
-            <label for="name">상품명</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="" required>
+            <label for="productName">상품명</label>
+            <input type="text" id="productName" name="productName" class="form-control" placeholder="" required>
         </div>
         <div>
             <label for="price">가격</label>
@@ -35,12 +35,13 @@
             <input type="text" id="description" name="description" class="form-control" placeholder="" required>
         </div>
         <div>
-            <label for="quantity">수량</label>
-            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="" required>
+            <label for="productStock">수량</label>
+            <input type="number" id="productStock" name="productStock" class="form-control" placeholder="" required>
         </div>
         <div>
-            <label for="seller">판매자</label>
-            <input type="text" id="seller" name="seller" class="form-control" placeholder="" required>
+            <label for="sellerNo">판매자</label>
+            <input type="text" id="sellerNo" name="sellerNo" class="form-control" placeholder="" required>
+            <!-- 현재 로그인 되어있는 사용자(판매자)의 아이디를 가져와 th:value로 담자 -->
         </div>
         <div>
             <label for="category">카테고리</label>

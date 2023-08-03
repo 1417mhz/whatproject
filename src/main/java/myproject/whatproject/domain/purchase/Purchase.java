@@ -20,7 +20,7 @@ public class Purchase {
     // private String postCode;
     private String contact;
     // private String shipCo; // FK ship_co(code)
-    private int seller; // FK seller(seller_no)
+    private int sellerNo; // FK seller(seller_no)
     private String state;
     private String stateUpdate; // timestamp
 
