@@ -23,18 +23,18 @@ class PurchaseServiceTest {
     @Test
     void createNewOrderTest() {
         Purchase purchase = new Purchase();
-        purchase.setProduct_no("8");
-        purchase.setQuantity(2);
-        purchase.setBuyer("13");
+        purchase.setProductNo(8);
+        purchase.setOrderQuantity(2);
+        purchase.setBuyer(13);
         purchase.setContact("010-8888-9999");
-        purchase.setSeller("1");
+        purchase.setSellerNo(1);
 
         purchaseService.createNewOrder(purchase);
 
         List<Purchase> orders = purchaseService.findAllOrder();
-        Product product = myMapper.findProductByNum(purchase.getProduct_no());
+        Product product = myMapper.findProductByNo(purchase.getProductNo());
         Assertions.assertThat(orders).hasSize(1);
-        System.out.println(product.getQuantity());
+        System.out.println(product.getProductStock());
     }
 
 }

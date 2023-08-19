@@ -14,7 +14,7 @@
     <div>
         <label for="user_no">회원번호</label>
         <input type="text" id="user_no" name="user_no" class="form-control"
-               value="회원번호" th:value="${user.userNum}" readonly>
+               value="회원번호" th:value="${user.userNo}" readonly>
     </div>
     <div>
         <label for="id">아이디</label>
@@ -60,6 +60,9 @@
         <label for="signup_date">가입일자</label>
         <input type="text" id="signup_date" name="signup_date" class="form-control"
                value="가입일자" th:value="${user.signupDate}" readonly>
+    </div>
+    <div>
+        <a href="/order/list" th:href="@{|/order/list/user/${user.userNo}|}">주문내역</a>
     </div>
     <hr class="my-4">
     <div class="row">

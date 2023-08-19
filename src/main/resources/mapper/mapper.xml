@@ -27,6 +27,22 @@
         SELECT * FROM user WHERE email = #{userEmail}
     </select>
 
+<!--    <select id="findUserBySpecification" parameterType="UserFilterDto" resultType="User">-->
+<!--        SELECT * FROM user-->
+<!--        <where>-->
+
+<!--            <if test="userEmail != null and !''.equals(userEmail)">-->
+<!--                AND email = #{userEmail}-->
+<!--            </if>-->
+<!--            <if test="userNo != null and !''.equals(userNo)">-->
+<!--                AND user_no = #{userNo}-->
+<!--            </if>-->
+<!--            <if test="userId != null and !''.equals(userId)">-->
+<!--                AND id = #{userId}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
     <select id="userVerify" resultType="string" parameterType="string">
         SELECT pw FROM user WHERE id = #{userId}
     </select>

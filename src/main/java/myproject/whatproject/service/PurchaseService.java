@@ -58,6 +58,7 @@ public class PurchaseService {
         purchase.setBuyer(buyer.getUserNo()); // form에서 넘어온 사용자 id로 사용자 번호를 알아내서 set함
         int orderQuantity = purchase.getOrderQuantity(); // 주문 수량
         int totalCheckout = purchase.getOrderQuantity() * product.getPrice(); // 총 결제 금액
+//        int totalCheckout = purchase.getTotalCheckout();
 
         int newProductStock = product.getProductStock() - orderQuantity;
         int newUserBalance = buyer.getBalance() - totalCheckout;

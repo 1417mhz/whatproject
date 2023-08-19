@@ -26,6 +26,8 @@ public interface MyMapper {
 
     User findUserByEmail(String userEmail);
 
+//    List<User> findUserBySpecification(UserFilterDto filter);
+
     String userVerify(String userId);
 
     void changeUserPw(@Param("userId") String userId, @Param("changePw") String changePw);
